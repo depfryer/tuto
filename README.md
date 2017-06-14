@@ -1,8 +1,8 @@
-alors tu connais
-* private  (seul la classe ou elle est initié y a acces)
-* public (tout le monde y as acces)
-* protected (la classe et c'est fille y on acces)
-ensuite dans mon code il ya style 
+Alors tu connais
+* private (seul la classe ou elle est initiée y a accès)
+* public (tout le monde y a accès)
+* proteste (la classe et c'est fille y ont accès)
+Ensuite dans mon code il Ya style 
 ```php
 /**
      * Roman constructor.
@@ -10,9 +10,9 @@ ensuite dans mon code il ya style
      * @param $nbPage
      */
 ```
-il s'agit de commentaire et permet de créé un doc, ou bien de savoir ce que fait la fonction
+Il s'agit de commentaire et permet de créer un doc, ou bien de savoir ce que fait la fonction
 ```php
-<?php
+<? php
 
 class Roman {
 
@@ -64,38 +64,38 @@ class Roman {
 }
 ```
 je t'ai fait une classe
-pour créé un roman il faut que tu fasse
+Pour créer un roman il faut que tu fasses
 ```php
     $monPremierRoman = new Roman('Ton Titres',52)
 ```
-cela pour effet d'avoir un objet avec plusieurs proprieté 
-et si par exemple tu as oublié le nom de ton roman
-pour le retrouver tu fais
+Cela pour effet d'avoir un objet avec plusieurs propriétés 
+Et si par exemple tu as oublié le nom de ton roman
+Pour le retrouver tu fais
 ```php
     $monPremierRoman->getNom()
 ```
-il s'agit d'un getter car il te donne une propriété 
-et tu obtient donc 
+Il s'agit d'un getter car il te donne une propriété 
+Et tu obtiens donc 
 Ton Titres
-et la malheurs tu realise que t'as fait une faute 
-tu peux faire
+Et le malheur tu réalises que t'as fait une faute 
+Tu peux faire
 ```php
     $monPremierRoman = new Roman('Ton Titre',52)
 ```
-mais bon ce n'est pas super du coup tu decide d'utiliser la fonction SetNom
-ce qui donne 
+Mais bon ce n'est pas super du coup tu décides d'utiliser la fonction SetNom
+Ce qui donne 
 ```php
     $monPremierRoman->setNom('Ton titre') //il n'y a plus la faute
 ```
-et maintenant si tu reutilise get 
-tu obtiens quoi ?
-l'avantage de faire ca c'est tout simplement la possibilité de faire plein de roman different
-avec un nom et un nombre de page different
+Et maintenant si tu réutilise guet 
+Tu obtiens quoi ?
+L’avantage de faire ça c'est tout simplement la possibilité de faire plein de roman diffèrent
+Avec un nom et un nombre de page diffèrent
 ```php
     $tonSecondRoman = new Roman('hey',28)
 ```
 Si tu veux obtenir le nombre de page de ton 2nd livre tu fais comment ??
-et changer le nombres de page ? attention au piege
+Et changer le nombre de page ? attention au piège
  
 
  
@@ -114,7 +114,7 @@ et changer le nombres de page ? attention au piege
 
  
 
-ensuite tu decide de faire une BD mais par contre tu decide de rajouter le dessinateur donc tu fais 
+Ensuite tu décides de faire une BD mais par contre tu décides de rajouter le dessinateur donc tu fais 
 ```php
 <?php
 class BD {
@@ -203,17 +203,17 @@ Que realise tu ?
  
 
 
-si tu as trouvé que c'etait quasiment le même code bien joué
-et pour le moment ca va mais si tu veux crée une class BD,puis pourquoi pas un livre pour enfant ect
-ca commence a faire beaucoup de fois le même code
+Si tu as trouvé que c'était quasiment le même code bien joué
+Et pour le moment ça va mais si tu veux créer une class BD, puis pourquoi pas un livre pour enfant et
+Ça commence à faire beaucoup de fois le même code
 
-et imagine t'as créé toute tes classe et tu realise que tu veux rajouter l'auteur 
-l'horreur 
-un telle code ne sera jamais maintenable
-et c'est la qu'a l'on va decouvrir le principe de 'mere fille'
-donc comme dans la vie 
-la fille recupere les genes de la mere (donc des propriete et des fonctions)
-ce qui permet un truc magnifique
+Et imagine t'as créé toute tes classes et tu réalises que tu veux rajouter l'auteur 
+L’horreur 
+Un telle code ne sera jamais maintenable
+Et c'est là qu'a l'on va découvrir le principe de 'mère fille'
+Donc comme dans la vie 
+La fille récupère les gènes de la mère (donc des propriétés et des fonctions)
+Ce qui permet un truc magnifique
 ```php
 <?php
     
@@ -266,32 +266,32 @@ class Livre {
     }
 }
 ```
-quoi mais ya pas de difference est bah pour le moment c'est juste Roman renommer Livre
-mais c'est a partir de ce moment que la magie opere
+Quoi mais il n’y a pas de différence est bah pour le moment c'est juste Roman renommer Livre
+Mais c'est à partir de ce moment que la magie opère
 ```php
 class Roman extends Livre{
 
 }
 ```
-et la Genial tu peut faire
+Et la Génial tu peux faire
 ```php
-    new Roman('sss',42)
+    New Roman('sss',42)
 ```
-et Ca marche
-donc on fait de même avec BD
+Et Ça marche
+Donc on fait de même avec BD
 ```php
-class BD extends Livre{
+class BD extends Livre {
 
 }
 ```
-mais la on a a un leger probleme
-en effet BD avait dessinateur en plus
-et bien rien de plus simple il suffit de faire
+Mais là on a un léger problème
+En effet BD avait dessinateur en plus
+Et bien rien de plus simple il suffit de faire
 ```php
 class BD extends Livre {
-    private $dessinateur;
+    Private $dessinateur ;
 
-    public function __construct($nom, $nbPage, $dessinateur)
+    Public fonction __construit($nom, $nb Page, $dessinateur)
     {
         parent::__construct($nom, $nbPage);
         $this->dessinateur = $dessinateur;
@@ -301,27 +301,28 @@ class BD extends Livre {
 
 ```
 
-et la on a rajouté la possibilité de rajouté un dessinateur
-la methode
+Et là on a rajouté la possibilité de rajouté un dessinateur
+La méthode
 
 ```php
     parent::__construct($nom, $nbPage);
 ```
-et un moyen afin de reutiliser le code de la mêre (dans notre cas livre)
-par contre si tu souhaite rajouté un parametre au livre il faudra aussi pensé a le rajouté ici (sinon il va pas aimer
-dans ce cas une solution est (je l'ai recuperer du jS) de non plus faire passé des variables
-mais un tableau
-style
+Et un moyen afin de réutiliser le code de la mère (dans notre cas livre)
+Par contre si tu souhaites rajouter un paramètre au livre il faudra aussi penser a le rajouté ici (sinon il ne va pas aimer
+Dans ce cas une solution est (je l'ai récupéré du JS) de non plus faire passer des variables
+Mais un tableau
+Style
 ```php 
-    {'nom':'Ton Titre','nbPage':22, ......}
+    {'nom' : 'Ton Titre','nbPage' :22, ...}
 ```
-ce qui donnera pour livre 
+
+Ce qui donnera pour livre 
 ```php
-public function __construct($tableau)
-    {
-        $this->nom = $tableau['nom'];
-        $this->nbPage = $tableau['nbPage'];
-    }
+    public function __construct($tableau)
+        {
+            $this->nom = $tableau['nom'] ;
+            $this->nbPage = $tableau['nbPage'] ;
+        }
 //j'ai juste mis le constructeur
 
 //pour la BD
@@ -332,13 +333,13 @@ public function __construct($tableau)
         this->dessinateur = $tableau['dessinateur'];
     }
 ```
-mais la je te donne un bon coup d'avance
-et comme ca si jamais tu veux rajouté une propriété a livre tu peux
+Mais là je te donne un bon coup d'avance
+Et comme ça si jamais ne tu veux rajouter une propriété a livré tu peux
 
 
-Maintenant fais moi juste la structure donc les variables et le construteur (si besoin est) afin de pouvoir faire
-* un Roman (nom ,auteurs , date)
-* une BD(auteurs , date, nom, dessinateur, ecrivain)
-* un Manga( date,nom ,auteurs , dessinateur,sens de lecture,ecrivain)
-* un CD (nom ,auteurs , date de sortie , nombre de piste)
-c'est tout pour le moments
+Maintenant fais-moi juste la structure donc les variables et le constructeur (si besoin est) afin de pouvoir faire
+* un Roman (nom, auteurs, date)
+* une BD (auteurs, date, nom, dessinateur, écrivain)
+* un Manga (date, nom, auteurs, dessinateur, sens de lecture, écrivain)
+* un CD (nom, auteurs, date de sortie, nombre de piste)
+C’est tout pour le moment
