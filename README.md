@@ -65,29 +65,35 @@ class Roman {
 ```
 je t'ai fait une classe
 pour créé un roman il faut que tu fasse
-$monPremierRoman = new Roman('Ton Titres',52)
-
+```php
+    $monPremierRoman = new Roman('Ton Titres',52)
+```
 cela pour effet d'avoir un objet avec plusieurs proprieté 
 et si par exemple tu as oublié le nom de ton roman
 pour le retrouver tu fais
-$monPremierRoman->getNom()
-
+```php
+    $monPremierRoman->getNom()
+```
 il s'agit d'un getter car il te donne une propriété 
 et tu obtient donc 
 Ton Titres
 et la malheurs tu realise que t'as fait une faute 
 tu peux faire
-$monPremierRoman = new Roman('Ton Titre',52)
+```php
+    $monPremierRoman = new Roman('Ton Titre',52)
+```
 mais bon ce n'est pas super du coup tu decide d'utiliser la fonction SetNom
 ce qui donne 
-$monPremierRoman->setNom('Ton titre') //il n'y a plus la faute
-
+```php
+    $monPremierRoman->setNom('Ton titre') //il n'y a plus la faute
+```
 et maintenant si tu reutilise get 
 tu obtiens quoi ?
 l'avantage de faire ca c'est tout simplement la possibilité de faire plein de roman different
 avec un nom et un nombre de page different
-$tonSecondRoman = new Roman('hey',28)
-
+```php
+    $tonSecondRoman = new Roman('hey',28)
+```
 Si tu veux obtenir le nombre de page de ton 2nd livre tu fais comment ??
 et changer le nombres de page ? attention au piege
  
@@ -115,24 +121,26 @@ class BD {
 
     private $nom;
     private $nbPage;
-    private $dessinateur/**
- * BD constructor.
- * @param $nom
- * @param $nbPage
- * @param $dessinateur
- */public function __construct($nom, $nbPage, $dessinateur)
-{
-    $this->nom = $nom;
-    $this->nbPage = $nbPage;
-    $this->dessinateur = $dessinateur;
-}
+    private $dessinateur
+    /**
+     * BD constructor.
+     * @param $nom
+     * @param $nbPage
+     * @param $dessinateur
+     */
+    public function __construct($nom, $nbPage, $dessinateur)
+    {
+        $this->nom = $nom;
+        $this->nbPage = $nbPage;
+        $this->dessinateur = $dessinateur;
+    }
     /**
      * BD constructor.
      * @param $nom
      * @param $nbPage
      */
     
-
+    
     /**
      * @return mixed
      */
@@ -140,7 +148,7 @@ class BD {
     {
         return $this->nom;
     }
-
+    
     /**
      * @param mixed $nom
      */
@@ -148,7 +156,7 @@ class BD {
     {
         $this->nom = $nom;
     }
-
+    
     /**
      * @return mixed
      */
@@ -156,7 +164,7 @@ class BD {
     {
         return $this->nbPage;
     }
-
+    
     /**
      * @param mixed $nbPage
      */
@@ -208,9 +216,9 @@ la fille recupere les genes de la mere (donc des propriete et des fonctions)
 ce qui permet un truc magnifique
 ```php
 <?php
-
+    
 class Livre {
-
+    
      protected $nom;
      protected $nbPage;
     
@@ -224,7 +232,7 @@ class Livre {
         $this->nom = $nom;
         $this->nbPage = $nbPage;
     }
-
+    
     /**
      * @return mixed
      */
@@ -232,7 +240,7 @@ class Livre {
     {
         return $this->nom;
     }
-
+    
     /**
      * @param mixed $nom
      */
@@ -240,7 +248,7 @@ class Livre {
     {
         $this->nom = $nom;
     }
-
+    
     /**
      * @return mixed
      */
@@ -248,7 +256,7 @@ class Livre {
     {
         return $this->nbPage;
     }
-
+    
     /**
      * @param mixed $nbPage
      */
@@ -266,8 +274,8 @@ class Roman extends Livre{
 }
 ```
 et la Genial tu peut faire
- ```php
-new Roman('sss',42)
+```php
+    new Roman('sss',42)
 ```
 et Ca marche
 donc on fait de même avec BD
@@ -279,7 +287,7 @@ class BD extends Livre{
 mais la on a a un leger probleme
 en effet BD avait dessinateur en plus
 et bien rien de plus simple il suffit de faire
-```pHP
+```php
 class BD extends Livre {
     private $dessinateur;
 
@@ -288,18 +296,25 @@ class BD extends Livre {
         parent::__construct($nom, $nbPage);
         $this->dessinateur = $dessinateur;
     }
-    ```
+....
+}
+
+```
+
 et la on a rajouté la possibilité de rajouté un dessinateur
 la methode
- parent::__construct($nom, $nbPage);
+
+```php
+    parent::__construct($nom, $nbPage);
+```
 et un moyen afin de reutiliser le code de la mêre (dans notre cas livre)
 par contre si tu souhaite rajouté un parametre au livre il faudra aussi pensé a le rajouté ici (sinon il va pas aimer
 dans ce cas une solution est (je l'ai recuperer du jS) de non plus faire passé des variables
 mais un tableau
 style
 ```php 
-{'nom':'Ton Titre','nbPage':22, ......}
-
+    {'nom':'Ton Titre','nbPage':22, ......}
+```
 ce qui donnera pour livre 
 ```php
 public function __construct($tableau)
